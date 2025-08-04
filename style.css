@@ -1,0 +1,264 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.container, .menu-content-page {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    color: #fff;
+}
+
+.menu-content-page {
+    max-width: 600px;
+}
+
+h1, h2, h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.description, .result-box p {
+    color: #eee;
+}
+
+#gacha-btn, .secondary-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    backdrop-filter: blur(5px);
+    margin-top: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+#gacha-btn:hover, .secondary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#gacha-btn:active, .secondary-btn:active {
+    transform: scale(0.98);
+}
+
+.result-box {
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#image-and-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#character-image {
+    max-width: 150px;
+    height: auto;
+    margin-top: 10px;
+    display: none;
+    pointer-events: none;
+}
+
+#result {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.menu-body {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.character-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.character-image-menu {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #fff;
+}
+
+.character-info {
+    text-align: left;
+}
+
+.menu-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.nav-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Gaya untuk statistik karakter dengan warna */
+.health-stat {
+    color: #ff0000;
+}
+
+.defense-stat {
+    color: #87ceeb;
+}
+
+.critical-stat {
+    color: #8b0000;
+}
+
+.ap-stat {
+    color: #ffd700;
+}
+
+.critical-damage-stat {
+    color: #ee82ee; /* Ungu */
+}
+
+/* Gaya untuk total combat point */
+.combat-point-stat {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffd700; /* Kuning Emas */
+    margin-top: 10px;
+}
+
+.hidden-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+/* Gaya untuk pop-up battle */
+#battle-popup .menu-content {
+    background-image: url('images/battle_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+#battle-popup .menu-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    border-radius: 12px;
+}
+
+/* --- Gaya baru untuk Battle Log --- */
+#battle-log {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    text-align: left;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+.shaking {
+    animation: shake 0.5s ease-in-out infinite;
+}
+/* Gaya untuk statistik speed */
+.speed-stat {
+    color: #90ee90; /* Hijau muda */
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gacha Karakter Sederhana</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Generator Gacha Karakter</h1>
+        <p class="description">Klik tombol di bawah untuk mendapatkan karakter acak!</p>
+        <button id="gacha-btn">Gacha!</button>
+        
+        <div class="result-box">
+            <p>Karakter yang Anda dapatkan:</p>
+            <div id="image-and-text-container">
+                <img id="character-image" src="" alt="Gambar Karakter">
+                <span id="result">---</span>
+            </div>
+            <button id="battle-btn" class="secondary-btn" style="display: none;">Mulai Pertarungan!</button>
+        </div>
+        
+        <a href="menu.html" id="open-menu-link" class="secondary-btn">Lihat Semua Karakter</a>
+    </div>
+
+    <div id="battle-popup" class="hidden-menu">
+        <div class="menu-content">
+            <h2 id="popup-title">Hasil Pertarungan</h2>
+            <div id="battle-result-details" class="menu-body">
+                </div>
+            <button id="close-popup-btn" class="close-btn">Tutup</button>
+        </div>
+    </div>
+
+    <audio id="gacha-sound" src="audio/shuffle.mp3" preload="auto" loop></audio>
+    <audio id="battle-sound" src="audio/battle.mp3" preload="auto" loop></audio>
+    <audio id="win-sound" src="audio/win.mp3" preload="auto"></audio>
+    <audio id="lose-sound" src="audio/lose.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
